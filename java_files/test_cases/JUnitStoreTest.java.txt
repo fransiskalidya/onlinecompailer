@@ -1,0 +1,25 @@
+package {{user_package}};
+import static org.junit.Assert.assertEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class JUnitStoreTest {
+	private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	 private final PrintStream oPrintStream = System.out;
+	
+ 
+    @Test
+    public void isStoreTest() {
+        System.out.println("Test is Succes and completed");
+        {{user_package}}.Store.main(null);
+        assertEquals("Main Constructor", "I am inside the constructor method", outputStream.toString());
+    }
+ 
+}

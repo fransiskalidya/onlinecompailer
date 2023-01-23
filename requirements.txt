@@ -1,0 +1,3 @@
+pdjango
+django-cors
+django-cors-headers

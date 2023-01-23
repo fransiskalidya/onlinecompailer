@@ -1,0 +1,36 @@
+package {{user_package}};
+
+import static org.junit.Assert.assertEquals;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class JUnitOrderNestTest {
+	private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	  private final PrintStream oPrintStream = System.out;
+
+	  @Before
+	  public void setUpStream() {
+	    System.setOut(new PrintStream(outputStream));
+	  }
+
+	  @After
+	  public void restoreStream() {
+	    System.setOut(oPrintStream);
+	  }
+	    @Test
+	    public void myOrderCaseResult() {
+	    	{{user_package}}.OrderNest.main(null);
+		    assertEquals("ShippingCost not same", "Shipping cost: 0.85", outputStream.toString());
+
+			double data1 = {{user_package}}.OrderNest.calculateShipping("Express", "ship50");
+		    assertEquals("Calculate Shipping not same", "0.85" ,String.valueOf(data1));
+		    
+		    {{user_package}}.OrderNest.ship(true, "Express", "ship50");
+		    
+	    }
+}
